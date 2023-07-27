@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schoolapp/constants.dart';
 import 'package:schoolapp/routes.dart';
+import 'package:schoolapp/screens/home_screen/home_screen.dart';
 import 'package:schoolapp/screens/splash_screen/splash_screen.dart';
 
 void main() => runApp(MyApp());
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
                 ),
       ),
       initialRoute: SplashScreen.routeName,
+      // initialRoute: HomeScreen.routeName,
       routes: routes,
       home: Scaffold(),
     );

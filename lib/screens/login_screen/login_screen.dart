@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/components/customs_buttons.dart';
 import 'package:schoolapp/constants.dart';
+import 'package:schoolapp/screens/home_screen/home_screen.dart';
 
 late bool _passwodVisible;
 
 class LoginScreen extends StatefulWidget {
   static String routeName = 'loginScreen';
 
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     // TODO: implement initState
@@ -76,27 +81,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     Form(
+                      key: _formKey,
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: kDefaultPadding,
-                          ),
+                          sizedBox,
                           TextFormField(
+                            validator: (value) {
+                              RegExp regExp = RegExp(emailPattern);
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              } else if (!regExp.hasMatch(value)) {
+                                return 'Please enter valid email address';
+                              }
+                            },
                             decoration: const InputDecoration(
                               hintText: 'Phone number / Email address',
                             ),
                             keyboardType: TextInputType.emailAddress,
                           ),
-                          SizedBox(
-                            height: kDefaultPadding,
-                          ),
+                          sizedBox,
                           TextFormField(
                             validator: (value) {
-                              RegExp regExp = new RegExp(emailPattern);
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter some text';
-                              } else if (!regExp.hasMatch(value)) {
-                                return 'Please enter valid email address';
+                              if (value!.isEmpty || value!.length < 6) {
+                                return 'Please enter Valid Password';
                               }
                             },
                             decoration: InputDecoration(
@@ -114,8 +121,26 @@ class _LoginScreenState extends State<LoginScreen> {
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: _passwodVisible,
                           ),
-                          SizedBox(
-                            height: kDefaultPadding,
+                          sizedBox,
+                          DefaultButton(
+                            icon: Icons.arrow_forward_outlined,
+                            title: 'SIGN IN',
+                            onPress: () {
+                              if (_formKey.currentState!.validate()) {
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    HomeScreen.routeName, (route) => false);
+                              }
+                            },
+                          ),
+                          sizedBox,
+                          const Align(
+                            alignment: Alignment.bottomRight,
+                            child: Text(
+                              'Forgot Password ?',
+                              textAlign: TextAlign.end,
+                              style:
+                                  TextStyle(color: kPrimaryColor, fontSize: 15),
+                            ),
                           ),
                         ],
                       ),
