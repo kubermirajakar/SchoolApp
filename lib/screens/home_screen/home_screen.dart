@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schoolapp/constants.dart';
+import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = 'homeScreen';
@@ -30,153 +31,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Hi ',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: kOtherColor.withOpacity(.8),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 20,
-                                  ),
-                            ),
-                            Text(
-                              'Ayesha',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: kOtherColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 20,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
+                        const StudentName(name: 'Ayesha'),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          'Class X-|| A | Roll no : 12',
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: kOtherColor.withOpacity(.8),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 15,
-                                  ),
-                        ),
-                        SizedBox(
+                        const StudentClass(
+                            studentClass: 'Class X-|| A | Roll no : 12'),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: MediaQuery.of(context).size.height / 24,
-                          decoration: BoxDecoration(
-                            color: kOtherColor,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                kDefaultPadding,
-                              ),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '2020 - 2021',
-                              style: TextStyle(color: kTextBlackColor),
-                            ),
-                          ),
-                        ),
+                        const StudentYear(studentYear: '2020 - 2021'),
                       ],
                     ),
-                    CircleAvatar(
-                      maxRadius: 50,
-                      minRadius: 50,
-                      backgroundImage:
-                          AssetImage('assets/images/student_profile.jpeg'),
-                    ),
+                    const StudentImage(
+                        studentImage: 'assets/images/student_profile.jpeg'),
                   ],
                 ),
                 sizedBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height / 9,
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      decoration: BoxDecoration(
-                        color: kOtherColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            kDefaultPadding,
-                          ),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            'Attedance',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: kTextBlackColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          Text(
-                            '90.02%',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    color: kTextBlackColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: kDefaultPadding),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 9,
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      decoration: BoxDecoration(
-                        color: kOtherColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            kDefaultPadding,
-                          ),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            'Fee Due',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: kTextBlackColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          Text(
-                            '600\$',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    color: kTextBlackColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: kDefaultPadding),
-                          ),
-                        ],
-                      ),
-                    ),
+                    StudentClassRecord(title: 'Attedance', value: '90%'),
+                    StudentClassRecord(title: 'Fees Due', value: '600\$'),
                   ],
                 ),
               ],
@@ -186,12 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               color: Colors.transparent,
               child: Container(
-                padding: EdgeInsets.only(top: kDefaultPadding * 2).copyWith(
-                    left: kDefaultPadding,
-                    bottom: kDefaultPadding,
-                    right: kDefaultPadding),
                 height: MediaQuery.of(context).size.height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kOtherColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(kDefaultPadding * 3),
@@ -199,16 +71,58 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
+                  padding: const EdgeInsets.all(kDefaultPadding * 1.2)
+                      .copyWith(top: kDefaultPadding * 2),
                   children: [
                     HomeCard(
-                      icon: 'assets/icons/ask.svg',
+                      icon: 'assets/icons/quiz.svg',
                       onPress: () {},
-                      title: 'Ask',
+                      title: 'Take Quiz',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/assignment.svg',
+                      onPress: () {},
+                      title: 'Assignment',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/datesheet.svg',
+                      onPress: () {},
+                      title: 'Datesheet',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/event.svg',
+                      onPress: () {},
+                      title: 'Events',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/gallery.svg',
+                      onPress: () {},
+                      title: 'Gallery',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/holiday.svg',
+                      onPress: () {},
+                      title: 'Holiday',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/lock.svg',
+                      onPress: () {},
+                      title: 'Change \n Password',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/result.svg',
+                      onPress: () {},
+                      title: 'Result',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/timetable.svg',
+                      onPress: () {},
+                      title: 'Time Table',
                     ),
                     HomeCard(
                       icon: 'assets/icons/ask.svg',
@@ -216,39 +130,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Ask',
                     ),
                     HomeCard(
-                      icon: 'assets/icons/ask.svg',
+                      icon: 'assets/icons/resume.svg',
                       onPress: () {},
-                      title: 'Ask',
+                      title: 'Leave\nApplication',
                     ),
                     HomeCard(
-                      icon: 'assets/icons/ask.svg',
+                      icon: 'assets/icons/logout.svg',
                       onPress: () {},
-                      title: 'Ask',
-                    ),
-                    HomeCard(
-                      icon: 'assets/icons/ask.svg',
-                      onPress: () {},
-                      title: 'Ask',
-                    ),
-                    HomeCard(
-                      icon: 'assets/icons/ask.svg',
-                      onPress: () {},
-                      title: 'Ask',
-                    ),
-                    HomeCard(
-                      icon: 'assets/icons/ask.svg',
-                      onPress: () {},
-                      title: 'Ask',
-                    ),
-                    HomeCard(
-                      icon: 'assets/icons/ask.svg',
-                      onPress: () {},
-                      title: 'Ask',
-                    ),
-                    HomeCard(
-                      icon: 'assets/icons/ask.svg',
-                      onPress: () {},
-                      title: 'Ask',
+                      title: 'Logout',
                     ),
                   ],
                 ),
