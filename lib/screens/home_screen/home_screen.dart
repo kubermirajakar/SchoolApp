@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schoolapp/constants.dart';
 import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
+import 'package:schoolapp/screens/my_profile/my_profile.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = 'homeScreen';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const StudentName(name: 'Ayesha'),
+                        const StudentName(name: 'Kuber'),
                         const SizedBox(
                           height: 10,
                         ),
@@ -43,16 +44,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         const StudentYear(studentYear: '2020 - 2021'),
                       ],
                     ),
-                    const StudentImage(
-                        studentImage: 'assets/images/student_profile.jpeg'),
+                    StudentImage(
+                      // studentImage: 'assets/images/student_profile.jpeg',
+                      studentImage: 'assets/images/aditi.jpeg',
+                      onPress: () {
+                        Navigator.pushNamed(context, MyProfileScreen.routeName);
+                      },
+                    ),
                   ],
                 ),
                 sizedBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    StudentClassRecord(title: 'Attedance', value: '90%'),
-                    StudentClassRecord(title: 'Fees Due', value: '600\$'),
+                    StudentClassRecord(
+                      title: 'Attedance',
+                      value: '90%',
+                      onPress: () {},
+                    ),
+                    StudentClassRecord(
+                      title: 'Fees Due',
+                      value: '600\$',
+                      onPress: () {},
+                    ),
                   ],
                 ),
               ],

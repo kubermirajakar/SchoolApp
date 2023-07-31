@@ -35,7 +35,7 @@ class SplashScreen extends StatelessWidget {
                       letterSpacing: 2),
                 ),
                 Text(
-                  'Brain',
+                  'Management',
                   style: GoogleFonts.pattaya(
                     color: kTextWhiteColor,
                     fontSize: 50,

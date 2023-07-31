@@ -102,8 +102,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           sizedBox,
                           TextFormField(
                             validator: (value) {
-                              if (value!.isEmpty || value!.length < 6) {
-                                return 'Please enter Valid Password';
+                              if (value!.isEmpty || value.length < 6) {
+                                return 'Please enter valid Password';
                               }
                             },
                             decoration: InputDecoration(

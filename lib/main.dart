@@ -16,15 +16,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       // Application name
       title: 'School Brain',
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: kPrimaryColor,
         primaryColor: kPrimaryColor,
+        appBarTheme: AppBarTheme(
+          color: kPrimaryColor,
+          elevation: 0,
+        ),
         textTheme:
             GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
                 .apply()
                 .copyWith(
+                  labelMedium: const TextStyle(
+                    color: kTextWhiteColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                   bodyLarge: const TextStyle(
                     color: kTextWhiteColor,
                     fontSize: 35,

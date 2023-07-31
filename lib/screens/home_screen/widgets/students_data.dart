@@ -79,15 +79,20 @@ class StudentYear extends StatelessWidget {
 
 class StudentImage extends StatelessWidget {
   final String studentImage;
+  final VoidCallback onPress;
 
-  const StudentImage({super.key, required this.studentImage});
+  const StudentImage(
+      {super.key, required this.studentImage, required this.onPress});
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      maxRadius: 50,
-      minRadius: 50,
-      backgroundImage: AssetImage(studentImage),
+    return GestureDetector(
+      onTap: onPress,
+      child: CircleAvatar(
+        maxRadius: 50,
+        minRadius: 50,
+        backgroundImage: AssetImage(studentImage),
+      ),
     );
   }
 }
@@ -95,41 +100,48 @@ class StudentImage extends StatelessWidget {
 class StudentClassRecord extends StatelessWidget {
   final String title;
   final String value;
+  final VoidCallback onPress;
 
   const StudentClassRecord(
-      {super.key, required this.title, required this.value});
+      {super.key,
+      required this.title,
+      required this.value,
+      required this.onPress});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height / 9,
-      width: MediaQuery.of(context).size.width / 2.5,
-      decoration: BoxDecoration(
-        color: kOtherColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            kDefaultPadding,
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        height: MediaQuery.of(context).size.height / 9,
+        width: MediaQuery.of(context).size.width / 2.5,
+        decoration: BoxDecoration(
+          color: kOtherColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              kDefaultPadding,
+            ),
           ),
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: kTextBlackColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            Text(
+              value,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: kTextBlackColor,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          Text(
-            value,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: kTextBlackColor,
-                fontWeight: FontWeight.w400,
-                fontSize: kDefaultPadding),
-          ),
-        ],
+                  fontWeight: FontWeight.w400,
+                  fontSize: kDefaultPadding),
+            ),
+          ],
+        ),
       ),
     );
   }
