@@ -9,8 +9,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-      Duration(
-        seconds: 3,
+      const Duration(
+        seconds: 5,
       ),
       () {
         Navigator.pushNamedAndRemoveUntil(
@@ -35,7 +35,7 @@ class SplashScreen extends StatelessWidget {
                       letterSpacing: 2),
                 ),
                 Text(
-                  'Management',
+                  'App',
                   style: GoogleFonts.pattaya(
                     color: kTextWhiteColor,
                     fontSize: 50,

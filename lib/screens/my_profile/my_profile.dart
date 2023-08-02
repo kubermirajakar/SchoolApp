@@ -155,6 +155,7 @@ class ProfileDetailColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -179,7 +180,7 @@ class ProfileDetailColumn extends StatelessWidget {
                     ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width / 1.1,
+                width: MediaQuery.of(context).size.width / 1.15,
                 child: Divider(
                   thickness: 1.0,
                 ),

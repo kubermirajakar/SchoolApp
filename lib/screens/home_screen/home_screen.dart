@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schoolapp/constants.dart';
+import 'package:schoolapp/screens/assignment_screen/assignment_Screen.dart';
+import 'package:schoolapp/screens/fee_screen/fee_screen.dart';
 import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
 import 'package:schoolapp/screens/my_profile/my_profile.dart';
 
@@ -65,7 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     StudentClassRecord(
                       title: 'Fees Due',
                       value: '600\$',
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context).pushNamed(FeeScreen.routeName);
+                      },
                     ),
                   ],
                 ),
@@ -100,7 +104,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     HomeCard(
                       icon: 'assets/icons/assignment.svg',
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context)
+                            .pushNamed(AssignmentScreen.routeName);
+                      },
                       title: 'Assignment',
                     ),
                     HomeCard(
@@ -177,34 +184,37 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 3,
-      height: MediaQuery.of(context).size.height / 10,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            kDefaultPadding,
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        width: MediaQuery.of(context).size.width / 3,
+        height: MediaQuery.of(context).size.height / 10,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              kDefaultPadding,
+            ),
           ),
+          color: kPrimaryColor,
         ),
-        color: kPrimaryColor,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SvgPicture.asset(
-            icon,
-            width: 50,
-            height: 50,
-            color: kTextWhiteColor,
-          ),
-          Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(fontSize: kDefaultPadding),
-          )
-        ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SvgPicture.asset(
+              icon,
+              width: 50,
+              height: 50,
+              color: kTextWhiteColor,
+            ),
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontSize: kDefaultPadding),
+            )
+          ],
+        ),
       ),
     );
   }
