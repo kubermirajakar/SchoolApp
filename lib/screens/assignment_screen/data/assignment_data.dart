@@ -27,13 +27,13 @@ List<AssignmentData> assignment = [
     'bohr Theory',
     '19 Nov 2022',
     '25 Nov 2022',
-    'Pending',
+    'Submitted',
   ),
   AssignmentData(
     'Biology',
     'Red Blood Cells',
     '19 Oct 2022',
     '25 Oct 2022',
-    'Pending',
+    'Not Submitted',
   ),
 ];
