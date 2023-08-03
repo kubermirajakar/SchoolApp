@@ -86,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           sizedBox,
                           TextFormField(
+                            initialValue: 'abc@xyz.com',
                             validator: (value) {
                               RegExp regExp = RegExp(emailPattern);
                               if (value == null || value.isEmpty) {
@@ -101,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           sizedBox,
                           TextFormField(
+                            initialValue: '123456',
                             validator: (value) {
                               if (value!.isEmpty || value.length < 6) {
                                 return 'Please enter valid Password';

@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(
-        seconds: 5,
+        seconds: 2,
       ),
       () {
         Navigator.pushNamedAndRemoveUntil(

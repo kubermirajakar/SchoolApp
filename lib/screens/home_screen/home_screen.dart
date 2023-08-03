@@ -6,6 +6,8 @@ import 'package:schoolapp/screens/data_sheet_screen/datasheet_screen.dart';
 import 'package:schoolapp/screens/fee_screen/fee_screen.dart';
 import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
 import 'package:schoolapp/screens/my_profile/my_profile.dart';
+import 'package:schoolapp/screens/result_screen/result_screen.dart';
+import 'package:schoolapp/screens/splash_screen/splash_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = 'homeScreen';
@@ -20,6 +22,105 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(
+        backgroundColor: kPrimaryColor,
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Container(
+                padding: EdgeInsets.all(kDefaultPadding / 2),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Hi, Aditi'),
+                        StudentImage(
+                            onPress: () {
+                              Navigator.of(context).pop();
+                              Navigator.pushNamed(
+                                  context, MyProfileScreen.routeName);
+                              // Navigator.of(context).pop();
+                            },
+                            studentImage: 'assets/images/aditi.jpeg'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/datesheet.svg',
+              onPress: () {
+                Navigator.of(context).pushNamed(DataSheetScreen.routeName);
+              },
+              title: 'Datesheet',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/assignment.svg',
+              onPress: () {
+                Navigator.of(context).pushNamed(AssignmentScreen.routeName);
+              },
+              title: 'Assignment',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/result.svg',
+              onPress: () {
+                Navigator.of(context).pushNamed(ResultScreen.routeName);
+              },
+              title: 'Result',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/quiz.svg',
+              onPress: () {},
+              title: 'Take Quiz',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/event.svg',
+              onPress: () {},
+              title: 'Events',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/gallery.svg',
+              onPress: () {},
+              title: 'Gallery',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/holiday.svg',
+              onPress: () {},
+              title: 'Holiday',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/lock.svg',
+              onPress: () {},
+              title: 'Change \n Password',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/timetable.svg',
+              onPress: () {},
+              title: 'Time Table',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/ask.svg',
+              onPress: () {},
+              title: 'Ask',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/resume.svg',
+              onPress: () {},
+              title: 'Leave\nApplication',
+            ),
+            DrawerHomeCard(
+              icon: 'assets/icons/logout.svg',
+              onPress: () {
+                Navigator.of(context).pushNamed(SplashScreen.routeName);
+              },
+              title: 'Logout',
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
           Container(
@@ -35,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const StudentName(name: 'Kuber'),
+                        const StudentName(name: 'Aditi'),
                         const SizedBox(
                           height: 10,
                         ),
@@ -99,9 +200,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       .copyWith(top: kDefaultPadding * 2),
                   children: [
                     HomeCard(
-                      icon: 'assets/icons/quiz.svg',
-                      onPress: () {},
-                      title: 'Take Quiz',
+                      icon: 'assets/icons/datesheet.svg',
+                      onPress: () {
+                        Navigator.of(context)
+                            .pushNamed(DataSheetScreen.routeName);
+                      },
+                      title: 'Datesheet',
                     ),
                     HomeCard(
                       icon: 'assets/icons/assignment.svg',
@@ -112,12 +216,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Assignment',
                     ),
                     HomeCard(
-                      icon: 'assets/icons/datesheet.svg',
+                      icon: 'assets/icons/result.svg',
                       onPress: () {
-                        Navigator.of(context)
-                            .pushNamed(DataSheetScreen.routeName);
+                        Navigator.of(context).pushNamed(ResultScreen.routeName);
                       },
-                      title: 'Datesheet',
+                      title: 'Result',
+                    ),
+                    HomeCard(
+                      icon: 'assets/icons/quiz.svg',
+                      onPress: () {},
+                      title: 'Take Quiz',
                     ),
                     HomeCard(
                       icon: 'assets/icons/event.svg',
@@ -140,11 +248,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Change \n Password',
                     ),
                     HomeCard(
-                      icon: 'assets/icons/result.svg',
-                      onPress: () {},
-                      title: 'Result',
-                    ),
-                    HomeCard(
                       icon: 'assets/icons/timetable.svg',
                       onPress: () {},
                       title: 'Time Table',
@@ -161,7 +264,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     HomeCard(
                       icon: 'assets/icons/logout.svg',
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context).pushNamed(SplashScreen.routeName);
+                      },
                       title: 'Logout',
                     ),
                   ],
@@ -210,6 +315,59 @@ class HomeCard extends StatelessWidget {
               height: 50,
               color: kTextWhiteColor,
             ),
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontSize: kDefaultPadding),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DrawerHomeCard extends StatelessWidget {
+  final String title;
+  final String icon;
+  final VoidCallback onPress;
+
+  const DrawerHomeCard(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.onPress});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: kDefaultPadding,
+          bottom: kDefaultPadding,
+        ),
+        width: MediaQuery.of(context).size.width / 4,
+        height: MediaQuery.of(context).size.height / 15,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              kDefaultPadding,
+            ),
+          ),
+          color: kPrimaryColor,
+        ),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icon,
+              width: 25,
+              height: 25,
+              color: kTextWhiteColor,
+            ),
+            kHalfWidthSizedBox,
             Text(
               title,
               style: Theme.of(context)
