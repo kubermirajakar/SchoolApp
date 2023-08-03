@@ -27,7 +27,7 @@ class SplashScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'School',
+                  'College',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: kTextWhiteColor,
                       fontSize: 50,

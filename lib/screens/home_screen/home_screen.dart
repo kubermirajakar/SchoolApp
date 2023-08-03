@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schoolapp/constants.dart';
 import 'package:schoolapp/screens/assignment_screen/assignment_Screen.dart';
+import 'package:schoolapp/screens/data_sheet_screen/datasheet_screen.dart';
 import 'package:schoolapp/screens/fee_screen/fee_screen.dart';
 import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
 import 'package:schoolapp/screens/my_profile/my_profile.dart';
@@ -112,7 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     HomeCard(
                       icon: 'assets/icons/datesheet.svg',
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context)
+                            .pushNamed(DataSheetScreen.routeName);
+                      },
                       title: 'Datesheet',
                     ),
                     HomeCard(
