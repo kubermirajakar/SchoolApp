@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/constants.dart';
+import 'package:schoolapp/screens/home_screen/widgets/drawer.dart';
 import 'package:schoolapp/screens/home_screen/widgets/students_data.dart';
 
 class MyProfileScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class MyProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text('My Profile'),
@@ -72,7 +74,7 @@ class MyProfileScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Ayesha Mirza',
+                          'Aditi Chitragar',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
                                     fontSize: 22,

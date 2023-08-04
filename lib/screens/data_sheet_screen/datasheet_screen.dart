@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolapp/constants.dart';
 import 'package:schoolapp/screens/assignment_screen/data/assignment_data.dart';
 import 'package:schoolapp/screens/data_sheet_screen/data/datasheet_data.dart';
+import 'package:schoolapp/screens/home_screen/widgets/drawer.dart';
 
 class DataSheetScreen extends StatelessWidget {
   static String routeName = 'DataSheetScreen';
@@ -10,6 +11,7 @@ class DataSheetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(

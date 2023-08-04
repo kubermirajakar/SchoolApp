@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/constants.dart';
+import 'package:schoolapp/screens/home_screen/widgets/drawer.dart';
 import 'package:schoolapp/screens/result_screen/component/result_component.dart';
 import 'package:schoolapp/screens/result_screen/data/result_data.dart';
 import 'package:sizer/sizer.dart';
@@ -15,6 +16,7 @@ class ResultScreen extends StatelessWidget {
     int tMarks = result.map((e) => e.totalMarks).sum.toInt();
 
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         title: Text('Result'),
         centerTitle: true,

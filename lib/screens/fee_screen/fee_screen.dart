@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolapp/constants.dart';
 import 'package:schoolapp/screens/fee_screen/Data/data.dart';
 import 'package:schoolapp/screens/fee_screen/widgets/fee_widgets.dart';
+import 'package:schoolapp/screens/home_screen/widgets/drawer.dart';
 
 class FeeScreen extends StatelessWidget {
   static String routeName = 'FeeScreen';
@@ -11,6 +12,7 @@ class FeeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text('Fee'),
