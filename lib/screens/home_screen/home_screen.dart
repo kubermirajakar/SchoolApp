@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
             DrawerHomeCard(
               icon: 'assets/icons/lock.svg',
               onPress: () {},
-              title: 'Change \n Password',
+              title: 'Change Password',
             ),
             DrawerHomeCard(
               icon: 'assets/icons/timetable.svg',
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
             DrawerHomeCard(
               icon: 'assets/icons/resume.svg',
               onPress: () {},
-              title: 'Leave\nApplication',
+              title: 'Leave Application',
             ),
             DrawerHomeCard(
               icon: 'assets/icons/logout.svg',
